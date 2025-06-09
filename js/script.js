@@ -291,9 +291,7 @@ function setupScrollAnimations() {
     }
   );
 
-  // Registrar ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
-
+  
   // Clase para el efecto de partículas
   class MagicParticles {
     constructor(canvas) {
