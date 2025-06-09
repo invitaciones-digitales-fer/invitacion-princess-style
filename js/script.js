@@ -464,35 +464,7 @@ function setupScrollAnimations() {
       const magicParticles = new MagicParticles(canvas);
     }
 
-    // Animación del pergamino mágico
-    gsap.fromTo('.scroll-parchment', {
-      scale: 0,
-      rotation: -10,
-      opacity: 0
-    }, {
-      scale: 1,
-      rotation: 360,
-      opacity: 1,
-      duration: 2.5,
-      ease: "elastic.out(1, 0.3)",
-      scrollTrigger: {
-        trigger: '.magic-quote',
-        start: 'top 70%',
-        toggleActions: 'play none none reverse'
-      },
-      onComplete: () => {
-        // Activar partículas después de la animación del pergamino
-        setTimeout(() => {
-          const section = document.getElementById('magicSection');
-          if (section) {
-            section.dispatchEvent(new Event('mouseenter'));
-            setTimeout(() => {
-              section.dispatchEvent(new Event('mouseleave'));
-            }, 3000);
-          }
-        }, 500);
-      }
-    });
+   
   });
   // Animación de los elementos de vestimenta
   gsap.fromTo('.dress-item',
@@ -784,6 +756,177 @@ function createSparkleEffect() {
     });
   }
 }
+
+function setupScrollAnimations() {
+  gsap.fromTo('.mirror-card', 
+    { y: 100, opacity: 0, scale: 0.8 }, 
+    { y: 0, opacity: 1, scale: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: '.info-cards',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse'
+      }
+    }
+  );
+}
+
+class MagicParticles {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
+    this.particles = [];
+    this.isActive = false;
+    this.animationId = null;
+    this.init();
+    this.setupEventListeners();
+  }
+
+  init() {
+    this.resizeCanvas();
+    window.addEventListener('resize', () => this.resizeCanvas());
+  }
+
+  resizeCanvas() {
+    const rect = this.canvas.parentElement.getBoundingClientRect();
+    this.canvas.width = rect.width;
+    this.canvas.height = rect.height;
+  }
+
+  setupEventListeners() {
+    const section = document.querySelector('.magic-quote'); 
+    section.addEventListener('mouseenter', () => this.startEffect());
+    section.addEventListener('mouseleave', () => this.stopEffect());
+
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        this.startEffect();
+        setTimeout(() => this.stopEffect(), 3000);
+      }, 1000);
+    }
+  }
+
+  createParticle() {
+    return {
+      x: Math.random() * this.canvas.width,
+      y: Math.random() * this.canvas.height,
+      size: Math.random() * 6 + 4,
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: -Math.random() * 2.5 - 1.5,
+      opacity: Math.random() * 0.8 + 0.2,
+      life: 1,
+      decay: Math.random() * 0.01 + 0.002,
+      color: this.getRandomColor(),
+      twinkle: Math.random() * Math.PI * 2,
+      twinkleSpeed: Math.random() * 0.1 + 0.05
+    };
+  }
+
+  getRandomColor() {
+    const colors = ['#FFD700', '#FFA500', '#FFFF00', '#DA70D6', '#DDA0DD', '#BA55D3',
+                    '#9370DB', '#FF69B4', '#FFB6C1', '#FFFFFF', '#F8F8FF', '#FFFAFA',
+                    '#F0F8FF', '#E6E6FA', '#FFF8DC', '#FFFFF0', '#F5F5F5'];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  startEffect() {
+    if (this.isActive) return;
+    this.isActive = true;
+    for (let i = 0; i < 45; i++) {
+      this.particles.push(this.createParticle());
+    }
+    this.animate();
+  }
+
+  stopEffect() {
+    this.isActive = false;
+    setTimeout(() => {
+      this.particles = [];
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      if (this.animationId) {
+        cancelAnimationFrame(this.animationId);
+      }
+    }, 1000);
+  }
+
+  animate() {
+    if (!this.isActive && this.particles.length === 0) return;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if (this.isActive && Math.random() < 0.4) {
+      this.particles.push(this.createParticle());
+    }
+
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const particle = this.particles[i];
+      particle.x += particle.speedX;
+      particle.y += particle.speedY;
+      particle.twinkle += particle.twinkleSpeed;
+      const twinkleOpacity = (Math.sin(particle.twinkle) + 1) * 0.5;
+      particle.life -= particle.decay;
+      particle.opacity = particle.life * twinkleOpacity;
+
+      this.ctx.save();
+      this.ctx.globalAlpha = Math.max(0, particle.opacity);
+      this.ctx.globalCompositeOperation = "lighter";
+      this.ctx.fillStyle = particle.color;
+      this.ctx.shadowBlur = 60;
+      this.ctx.shadowColor = particle.color;
+      this.ctx.beginPath();
+      this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      this.ctx.fill();
+      this.drawStar(particle.x, particle.y, particle.size * 1.5, particle.color);
+      this.ctx.restore();
+
+      if (particle.life <= 0 || particle.y < -10 || particle.x < -10 || particle.x > this.canvas.width + 10) {
+        this.particles.splice(i, 1);
+      }
+    }
+
+    this.animationId = requestAnimationFrame(() => this.animate());
+  }
+
+  drawStar(x, y, size, color) {
+    this.ctx.save();
+    this.ctx.strokeStyle = color;
+    this.ctx.lineWidth = 1;
+    this.ctx.globalAlpha = 0.6;
+    this.ctx.beginPath();
+    this.ctx.moveTo(x - size, y);
+    this.ctx.lineTo(x + size, y);
+    this.ctx.moveTo(x, y - size);
+    this.ctx.lineTo(x, y + size);
+    this.ctx.moveTo(x - size * 0.7, y - size * 0.7);
+    this.ctx.lineTo(x + size * 0.7, y + size * 0.7);
+    this.ctx.moveTo(x - size * 0.7, y + size * 0.7);
+    this.ctx.lineTo(x + size * 0.7, y - size * 0.7);
+    this.ctx.stroke();
+    this.ctx.restore();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('particlesCanvas');
+  if (canvas) {
+    new MagicParticles(canvas);
+  }
+
+  gsap.fromTo('.magic-quote', 
+    { scale: 0, rotation: -10, opacity: 0 }, 
+    { scale: 1, rotation: 0, opacity: 1, duration: 2.5, ease: "elastic.out(1, 0.3)",
+      scrollTrigger: {
+        trigger: '.magic-quote',
+        start: 'top 70%',
+        toggleActions: 'play none none reverse'
+      }
+    }
+  );
+
+  gsap.fromTo('.parchment-content h2', 
+    { opacity: 0, y: 30 }, 
+    { opacity: 1, y: 0, duration: 1.2, delay: 1, ease: "power2.out" }
+  );
+});
+
 
 
 // === UTILIDADES ===
