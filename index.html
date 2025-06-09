@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación Mágica - Cumpleaños de Talys</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+
+
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
     rel="stylesheet">
@@ -29,19 +28,19 @@
     </div>
   </div>
 
-  
+
 
   <!-- Contenido Principal -->
   <div id="main-content" class="main-content hidden">
     <!-- Botón de Control de Música -->
-  <button id="music-toggle" class="music-toggle hidden">
-    <img id="music-icon" src="img/music_on.png" alt="Play Music" class="music-icon-img">
-  </button>
+    <button id="music-toggle" class="music-toggle hidden">
+      <img id="music-icon" src="img/music_on.png" alt="Play Music" class="music-icon-img">
+    </button>
 
-  <!-- Audio Element -->
-  <audio id="background-music" loop>
-    <source src="music/background-music.mp3" type="audio/mpeg">
-  </audio>
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+      <source src="music/background-music.mp3" type="audio/mpeg">
+    </audio>
     <!-- Hero Section con imagen de fondo -->
     <section class="hero">
       <div class="hero-background"></div>
@@ -61,35 +60,35 @@
           <img src="img/moon1.png" alt="" class="butterfly butterfly-3">
           <img src="img/moon1.png" alt="" class="butterfly butterfly-1"> -->
 
-        <div class="hero-logo">
-          <div class="crown-logo">
-            <img src="img/logo-magic.png" alt="Logo Principal Mágico" class="main-logo magic-logo">
-          </div>
-        </div>
-        <div class="countdown-container">
-          <h3>La Magia Comienza En:</h3>
-          <div id="countdown" class="countdown">
-            <div class="time-unit">
-              <span id="days">00</span>
-              <label>Días</label>
-            </div>
-            <div class="countdown-separator">:</div>
-            <div class="time-unit">
-              <span id="hours">00</span>
-              <label>Horas</label>
-            </div>
-            <div class="countdown-separator">:</div>
-            <div class="time-unit">
-              <span id="minutes">00</span>
-              <label>Minutos</label>
-            </div>
-            <div class="countdown-separator">:</div>
-            <div class="time-unit">
-              <span id="seconds">00</span>
-              <label>Segundos</label>
+          <div class="hero-logo">
+            <div class="crown-logo">
+              <img src="img/logo-magic.png" alt="Logo Principal Mágico" class="main-logo magic-logo">
             </div>
           </div>
-        </div>
+          <div class="countdown-container">
+            <h3>La Magia Comienza En:</h3>
+            <div id="countdown" class="countdown">
+              <div class="time-unit">
+                <span id="days">00</span>
+                <label>Días</label>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="time-unit">
+                <span id="hours">00</span>
+                <label>Horas</label>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="time-unit">
+                <span id="minutes">00</span>
+                <label>Minutos</label>
+              </div>
+              <div class="countdown-separator">:</div>
+              <div class="time-unit">
+                <span id="seconds">00</span>
+                <label>Segundos</label>
+              </div>
+            </div>
+          </div>
 
     </section>
 
@@ -121,21 +120,21 @@
       </div>
     </section>
 
-   
+
     <!-- Frase Mágica -->
     <section class="magic-quote">
-        <div class="container">
-            <div class="scroll-parchment" id="magicSection">
-                <canvas class="particles-canvas" id="particlesCanvas"></canvas>
-                <div class="parchment-content frase">
-                    <h2>"En este reino mágico, cada sueño se hace realidad y cada momento brilla como una estrella"</h2>
-                    <div class="sparkles">✨</div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="scroll-parchment" id="magicSection">
+          <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+          <div class="parchment-content frase">
+            <h2>"En este reino mágico, cada sueño se hace realidad y cada momento brilla como una estrella"</h2>
+            <div class="sparkles">✨</div>
+          </div>
         </div>
+      </div>
     </section>
 
-   
+
 
 
 
@@ -153,62 +152,63 @@
       </div>
     </section>
 
-     <!-- Código de Vestimenta -->
+    <!-- Código de Vestimenta -->
     <section class="dress-code">
-        <div class="container">
-            <h2 class="section-title">Código de Vestimenta</h2>
-            
-            <div class="dress-code-description">
-                <p>¡Ven vestido como tu personaje favorito! Princesas, príncipes, hadas, magos y criaturas mágicas son bienvenidos. Los disfraces harán que la fiesta sea aún más especial y mágica.</p>
-            </div>
-            
-            <div class="dress-items">
-                <div class="dress-item">
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="dress-icon">
-                        <img src="img/vestido.png" alt="Princesas" width="120">
-                    </div>
-                    <p>Princesas</p>
-                </div>
-                
-                <div class="dress-item">
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="dress-icon">
-                        <img src="img/caballero.png" alt="Príncipes" width="120">
-                    </div>
-                    <p>Príncipes</p>
-                </div>
-                
-                <div class="dress-item">
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="dress-icon">
-                        <img src="img/hadita.png" alt="Hadas" width="120">
-                    </div>
-                    <p>Hadas</p>
-                </div>
-                
-                <div class="dress-item">
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="dress-icon">
-                        <img src="img/mago.png" alt="Magos" width="120">
-                    </div>
-                    <p>Magos</p>
-                </div>
-            </div>
-            
+      <div class="container">
+        <h2 class="section-title">Código de Vestimenta</h2>
+
+        <div class="dress-code-description">
+          <p>¡Ven vestido como tu personaje favorito! Princesas, príncipes, hadas, magos y criaturas mágicas son
+            bienvenidos. Los disfraces harán que la fiesta sea aún más especial y mágica.</p>
         </div>
+
+        <div class="dress-items">
+          <div class="dress-item">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="dress-icon">
+              <img src="img/vestido.png" alt="Princesas" width="120">
+            </div>
+            <p>Princesas</p>
+          </div>
+
+          <div class="dress-item">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="dress-icon">
+              <img src="img/caballero.png" alt="Príncipes" width="120">
+            </div>
+            <p>Príncipes</p>
+          </div>
+
+          <div class="dress-item">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="dress-icon">
+              <img src="img/hadita.png" alt="Hadas" width="120">
+            </div>
+            <p>Hadas</p>
+          </div>
+
+          <div class="dress-item">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="dress-icon">
+              <img src="img/mago.png" alt="Magos" width="120">
+            </div>
+            <p>Magos</p>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- Música Mágica -->
@@ -279,15 +279,15 @@
 
     <!-- Mensaje Final -->
     <section class="final-message">
-      
+
       <div class="container">
         <div class="thank-you-card">
-          
+
           <h2>¡Gracias por Ser Parte de Este Sueño!</h2>
-          
+
           <p>Tu presencia hará que esta celebración sea verdaderamente mágica</p>
           <div class="final-sparkles">
-            
+
             <img src="img/corona.png" alt="Corona" class="final-crown">
             <img src="img/butterfly.png" alt="Mariposa" class="final-butterfly">
             <img src="img/varita.png" alt="Varita" class="final-wand">
@@ -296,13 +296,8 @@
       </div>
     </section>
   </div>
-  <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Sparkleh.js -->
-<script src="https://cdn.jsdelivr.net/gh/Siddharth11/sparkleh/jquery.sparkleh.min.js"></script>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/script.js" defer></script>
 </body>
 

@@ -291,7 +291,7 @@ function setupScrollAnimations() {
     }
   );
 
-  
+
   // Clase para el efecto de partículas
   class MagicParticles {
     constructor(canvas) {
@@ -340,12 +340,12 @@ function setupScrollAnimations() {
       return {
         x: Math.random() * this.canvas.width,
         y: Math.random() * this.canvas.height,
-        size: Math.random() * 4 + 1,
+        size: Math.random() * 6 + 4,
         speedX: (Math.random() - 0.5) * 0.5,
-        speedY: -Math.random() * 0.5 - 0.2,
+        speedY: -Math.random() * 2.5 - 1.5,
         opacity: Math.random() * 0.8 + 0.2,
         life: 1,
-        decay: Math.random() * 0.02 + 0.005,
+        decay: Math.random() * 0.01 + 0.002,
         color: this.getRandomColor(),
         twinkle: Math.random() * Math.PI * 2,
         twinkleSpeed: Math.random() * 0.1 + 0.05
@@ -389,6 +389,8 @@ function setupScrollAnimations() {
     }
 
     animate() {
+      
+
       if (!this.isActive && this.particles.length === 0) return;
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -410,9 +412,11 @@ function setupScrollAnimations() {
         particle.opacity = particle.life * twinkleOpacity;
 
         this.ctx.save();
+        
         this.ctx.globalAlpha = Math.max(0, particle.opacity);
+        this.ctx.globalCompositeOperation = "lighter";
         this.ctx.fillStyle = particle.color;
-        this.ctx.shadowBlur = 10;
+        this.ctx.shadowBlur = 60;
         this.ctx.shadowColor = particle.color;
 
         this.ctx.beginPath();
@@ -467,10 +471,10 @@ function setupScrollAnimations() {
       opacity: 0
     }, {
       scale: 1,
-      rotation: 0,
+      rotation: 360,
       opacity: 1,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.5)",
+      duration: 2.5,
+      ease: "elastic.out(1, 0.3)",
       scrollTrigger: {
         trigger: '.magic-quote',
         start: 'top 70%',
@@ -501,9 +505,9 @@ function setupScrollAnimations() {
       y: 0,
       opacity: 1,
       scale: 1,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power2.out",
+      duration: 1.2,
+      stagger: 0.2,
+      ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: '.dress-items',
         start: 'top 80%',
@@ -660,7 +664,7 @@ function setupModal() {
       ease: "back.out(1.7)"
     });
 
-musicToggleBtn.classList.remove('hidden');
+    musicToggleBtn.classList.remove('hidden');
 
 
     // Efecto de sparkles en la varita
@@ -780,23 +784,6 @@ function createSparkleEffect() {
     });
   }
 }
-document.addEventListener("DOMContentLoaded", () => {
-  if (typeof $ === "function" && typeof $.fn.sparkleh === "function") {
-    $(".frase").sparkleh({
-      count: 60,
-      color: ["#fffacd", "#fbcfe8", "#e9d5ff", "#fde68a"],
-      speed: 0.3
-    });
-  } else {
-    console.warn("Sparkleh.js no cargado o jQuery no disponible");
-  }
-});
-
-$(".sparkle-target").sparkleh({
-  count: 40,
-  color: ["#fff", "#ffecb3", "#ffd6e0"],
-  speed: 0.2
-});
 
 
 // === UTILIDADES ===
