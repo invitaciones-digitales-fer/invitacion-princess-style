@@ -36,12 +36,7 @@ function setupWelcomeOverlay() {
 
   // Animaciones del overlay
   gsap.timeline()
-    .from('.welcome-logo', {
-      duration: 1.5,
-      scale: 0,
-      rotation: 360,
-      ease: "back.out(1.7)"
-    })
+
     .from('.welcome-title', {
       duration: 1,
       y: 50,
@@ -101,18 +96,7 @@ function startMainContentAnimations() {
       rotation: 720,
       ease: "back.out(1.7)"
     })
-    .from('.hero-title', {
-      duration: 1,
-      y: 100,
-      opacity: 0,
-      ease: "power3.out"
-    }, "-=0.5")
-    .from('.hero-subtitle', {
-      duration: 1,
-      y: 50,
-      opacity: 0,
-      ease: "power2.out"
-    }, "-=0.5")
+
     .from('.countdown-container', {
       duration: 1,
       scale: 0,
@@ -151,6 +135,8 @@ function animateButterflies() {
     });
   });
 }
+
+
 
 // === CONTADOR REGRESIVO ===
 function setupCountdown() {
@@ -280,7 +266,7 @@ function pauseMusic() {
   });
 }
 
-// === ANIMACIONES DE SCROLL ===
+// === ANIMACIONES DE SCROLL HACER TARJETA MAGICA CODEPEN===
 function setupScrollAnimations() {
   // Animaciones para las tarjetas de información
   gsap.fromTo('.mirror-card',
@@ -305,25 +291,207 @@ function setupScrollAnimations() {
     }
   );
 
-  // Animación del pergamino mágico
-  gsap.fromTo('.scroll-parchment',
-    {
+  // Registrar ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Clase para el efecto de partículas
+  class MagicParticles {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+      this.particles = [];
+      this.isActive = false;
+      this.animationId = null;
+
+      this.init();
+      this.setupEventListeners();
+    }
+
+    init() {
+      this.resizeCanvas();
+      window.addEventListener('resize', () => this.resizeCanvas());
+    }
+
+    resizeCanvas() {
+      const rect = this.canvas.parentElement.getBoundingClientRect();
+      this.canvas.width = rect.width;
+      this.canvas.height = rect.height;
+    }
+
+    setupEventListeners() {
+      const section = document.getElementById('magicSection');
+
+      section.addEventListener('mouseenter', () => {
+        this.startEffect();
+      });
+
+      section.addEventListener('mouseleave', () => {
+        this.stopEffect();
+      });
+
+      // Auto-activación en móviles
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          this.startEffect();
+          setTimeout(() => this.stopEffect(), 3000);
+        }, 1000);
+      }
+    }
+
+    createParticle() {
+      return {
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 4 + 1,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: -Math.random() * 0.5 - 0.2,
+        opacity: Math.random() * 0.8 + 0.2,
+        life: 1,
+        decay: Math.random() * 0.02 + 0.005,
+        color: this.getRandomColor(),
+        twinkle: Math.random() * Math.PI * 2,
+        twinkleSpeed: Math.random() * 0.1 + 0.05
+      };
+    }
+
+    getRandomColor() {
+      const colors = [
+        '#FFD700', '#FFA500', '#FFFF00', // Dorados
+        '#DA70D6', '#DDA0DD', '#BA55D3', '#9370DB', // Lilas
+        '#FF69B4', '#FFB6C1', // Rosas
+        '#FFFFFF', '#F8F8FF', '#FFFAFA', '#F0F8FF', // Blancos
+        '#E6E6FA', '#FFF8DC', '#FFFFF0', '#F5F5F5'  // Más blancos
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    startEffect() {
+      if (this.isActive) return;
+
+      this.isActive = true;
+
+      for (let i = 0; i < 45; i++) {
+        this.particles.push(this.createParticle());
+      }
+
+      this.animate();
+    }
+
+    stopEffect() {
+      this.isActive = false;
+
+      // Desvanecer partículas gradualmente
+      setTimeout(() => {
+        this.particles = [];
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        if (this.animationId) {
+          cancelAnimationFrame(this.animationId);
+        }
+      }, 1000);
+    }
+
+    animate() {
+      if (!this.isActive && this.particles.length === 0) return;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      if (this.isActive && Math.random() < 0.4) {
+        this.particles.push(this.createParticle());
+      }
+
+      for (let i = this.particles.length - 1; i >= 0; i--) {
+        const particle = this.particles[i];
+
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        particle.twinkle += particle.twinkleSpeed;
+        const twinkleOpacity = (Math.sin(particle.twinkle) + 1) * 0.5;
+
+        particle.life -= particle.decay;
+        particle.opacity = particle.life * twinkleOpacity;
+
+        this.ctx.save();
+        this.ctx.globalAlpha = Math.max(0, particle.opacity);
+        this.ctx.fillStyle = particle.color;
+        this.ctx.shadowBlur = 10;
+        this.ctx.shadowColor = particle.color;
+
+        this.ctx.beginPath();
+        this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        this.ctx.fill();
+
+        this.drawStar(particle.x, particle.y, particle.size * 1.5, particle.color);
+
+        this.ctx.restore();
+
+        if (particle.life <= 0 || particle.y < -10 || particle.x < -10 || particle.x > this.canvas.width + 10) {
+          this.particles.splice(i, 1);
+        }
+      }
+
+      this.animationId = requestAnimationFrame(() => this.animate());
+    }
+
+    drawStar(x, y, size, color) {
+      this.ctx.save();
+      this.ctx.strokeStyle = color;
+      this.ctx.lineWidth = 1;
+      this.ctx.globalAlpha = 0.6;
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(x - size, y);
+      this.ctx.lineTo(x + size, y);
+      this.ctx.moveTo(x, y - size);
+      this.ctx.lineTo(x, y + size);
+      this.ctx.moveTo(x - size * 0.7, y - size * 0.7);
+      this.ctx.lineTo(x + size * 0.7, y + size * 0.7);
+      this.ctx.moveTo(x - size * 0.7, y + size * 0.7);
+      this.ctx.lineTo(x + size * 0.7, y - size * 0.7);
+      this.ctx.stroke();
+
+      this.ctx.restore();
+    }
+  }
+
+  // Inicializar todo cuando se carga la página
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar partículas
+    const canvas = document.getElementById('particlesCanvas');
+    if (canvas) {
+      const magicParticles = new MagicParticles(canvas);
+    }
+
+    // Animación del pergamino mágico
+    gsap.fromTo('.scroll-parchment', {
       scale: 0,
-      rotation: -10
-    },
-    {
+      rotation: -10,
+      opacity: 0
+    }, {
       scale: 1,
       rotation: 0,
+      opacity: 1,
       duration: 1.5,
       ease: "elastic.out(1, 0.5)",
       scrollTrigger: {
         trigger: '.magic-quote',
         start: 'top 70%',
         toggleActions: 'play none none reverse'
+      },
+      onComplete: () => {
+        // Activar partículas después de la animación del pergamino
+        setTimeout(() => {
+          const section = document.getElementById('magicSection');
+          if (section) {
+            section.dispatchEvent(new Event('mouseenter'));
+            setTimeout(() => {
+              section.dispatchEvent(new Event('mouseleave'));
+            }, 3000);
+          }
+        }, 500);
       }
-    }
-  );
-
+    });
+  });
   // Animación de los elementos de vestimenta
   gsap.fromTo('.dress-item',
     {
@@ -484,6 +652,18 @@ function setupModal() {
         ease: "power2.out"
       }
     );
+    gsap.fromTo(musicToggleBtn, {
+      scale: 0,
+      opacity: 0
+    }, {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      ease: "back.out(1.7)"
+    });
+
+musicToggleBtn.classList.remove('hidden');
+
 
     // Efecto de sparkles en la varita
     createSparkleEffect();
@@ -602,6 +782,24 @@ function createSparkleEffect() {
     });
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof $ === "function" && typeof $.fn.sparkleh === "function") {
+    $(".frase").sparkleh({
+      count: 60,
+      color: ["#fffacd", "#fbcfe8", "#e9d5ff", "#fde68a"],
+      speed: 0.3
+    });
+  } else {
+    console.warn("Sparkleh.js no cargado o jQuery no disponible");
+  }
+});
+
+$(".sparkle-target").sparkleh({
+  count: 40,
+  color: ["#fff", "#ffecb3", "#ffd6e0"],
+  speed: 0.2
+});
+
 
 // === UTILIDADES ===
 function debounce(func, wait) {
