@@ -28,7 +28,11 @@
     </div>
   </div>
 
-  <!-- Botón de Control de Música -->
+  
+
+  <!-- Contenido Principal -->
+  <div id="main-content" class="main-content hidden">
+    <!-- Botón de Control de Música -->
   <button id="music-toggle" class="music-toggle hidden">
     <img id="music-icon" src="img/music_on.png" alt="Play Music" class="music-icon-img">
   </button>
@@ -37,9 +41,6 @@
   <audio id="background-music" loop>
     <source src="music/background-music.mp3" type="audio/mpeg">
   </audio>
-
-  <!-- Contenido Principal -->
-  <div id="main-content" class="main-content hidden">
     <!-- Hero Section con imagen de fondo -->
     <section class="hero">
       <div class="hero-background"></div>
@@ -261,10 +262,12 @@
       </div>
     </section>
   </div>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- Sparkleh.js -->
+<script src="https://cdn.jsdelivr.net/gh/Siddharth11/sparkleh/jquery.sparkleh.min.js"></script>
 
-  <script src="js/sparkleh.js"></script>
 
   <script src="js/script.js" defer></script>
 </body>

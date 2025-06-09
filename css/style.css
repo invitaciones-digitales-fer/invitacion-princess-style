@@ -18,10 +18,10 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
+  overflow-x: hidden;}
 
 
 
@@ -185,7 +185,7 @@ body {
 
 /* Botón de Música */
 .music-toggle {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
@@ -200,7 +200,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .music-toggle:hover {
@@ -209,8 +209,8 @@ body {
 }
 
 .music-icon-img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 /* Hero Section */
@@ -231,7 +231,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('./hero-background.png') center/cover;
+ background: url('../img/hero-background.png') center/cover;
+
   background-attachment: fixed;
   z-index: -2;
 }
@@ -362,6 +363,7 @@ body {
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 205px;
 }
 
 .countdown-container h3 {
@@ -1065,7 +1067,8 @@ body {
 }
 
 .thank-you-card {
-  background: url('./hero-background.png') center/cover;
+  background: url('../img/hero-background.png') center/cover;
+
   background-attachment: fixed;
   z-index: -2;
   border-radius: 20px;
@@ -1126,10 +1129,10 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .music-toggle {
-    top: 1rem;
-    right: 1rem;
     width: 50px;
     height: 50px;
+    top: 12px;
+    right: 12px;
   }
 
   .music-icon-img {
