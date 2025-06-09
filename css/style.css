@@ -13,6 +13,11 @@ body {
   overflow-y: auto;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* Utilidades */
 .hidden {
   display: none !important;
@@ -617,6 +622,18 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.scroll-parchment {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s;
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
 .scroll-parchment:hover {
   transform: translateY(-5px);
 }
@@ -643,6 +660,7 @@ body {
   pointer-events: none;
   z-index: 1;
 }
+
 
 .parchment-content {
   position: relative;
@@ -1534,5 +1552,16 @@ body {
   .music-icon-img {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* 🎧 Ajuste extra por si el botón de música sigue molestando en mobile */
+@media (max-width: 480px) {
+  .music-toggle {
+    top: 8px;
+    right: 8px;
+    width: 48px;
+    height: 48px;
+    max-width: 100%;
   }
 }
