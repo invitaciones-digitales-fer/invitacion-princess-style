@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación Mágica - Cumpleaños de Esmeralda</title>
   <link rel="stylesheet" href="css/style_mobile_first.css">
+  <link rel="preload" as="image" href="img/hero-background.webp">
+  <!-- Mejora rendimiento cargando antes los dominios -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
     rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap" rel="stylesheet">
 
 </head>
@@ -37,52 +41,54 @@
   <div id="main-content" class="main-content hidden">
     <!-- Botón de Control de Música -->
     <button id="music-toggle" class="music-toggle hidden">
-      <img id="music-icon" src="img/music_on.png" alt="Play Music" class="music-icon-img">
+      <img id="music-icon" src="img/music_on.webp" alt="Play Music" class="music-icon-img">
     </button>
 
     <!-- Audio Element -->
-    <audio id="background-music" loop>
+    <audio id="background-music" preload="none" loop>
+      <source src="music/background-music.ogg" type="audio/ogg">
       <source src="music/background-music.mp3" type="audio/mpeg">
     </audio>
+
     <!-- Hero Section con imagen de fondo -->
     <section class="hero">
       <div class="hero-background"></div>
       <div class="container">
         <div class="magic-butterflies"></div>
-          <img src="img/butterfly.png" alt="Mariposa" class="butterfly butterfly-1">
-          <img src="img/butterfly.png" alt="Mariposa" class="butterfly butterfly-2">
-          <img src="img/butterfly.png" alt="Mariposa" class="butterfly butterfly-3">
-          <img src="img/butterfly.png" alt="Mariposa" class="butterfly butterfly-4">
-          <img src="img/butterfly.png" alt="Mariposa" class="butterfly butterfly-5">
-          <div class="hero-logo">
-            <div class="crown-logo">
-              <img src="img/logo-magic.png" alt="Logo Principal Mágico" class="main-logo magic-logo">
+        <img src="img/butterfly (1).webp" alt="Mariposa" class="butterfly butterfly-1">
+        <img src="img/butterfly (1).webp" alt="Mariposa" class="butterfly butterfly-2">
+        <img src="img/butterfly (1).webp" alt="Mariposa" class="butterfly butterfly-3">
+        <img src="img/butterfly (1).webp" alt="Mariposa" class="butterfly butterfly-4">
+        <img src="img/butterfly (1).webp" alt="Mariposa" class="butterfly butterfly-5">
+        <div class="hero-logo">
+          <div class="crown-logo">
+            <img src="img/logo-magic.webp" alt="Logo Principal Mágico" class="main-logo magic-logo">
+          </div>
+        </div>
+        <div class="countdown-container">
+          <h3>La Magia Comienza En:</h3>
+          <div id="countdown" class="countdown">
+            <div class="time-unit">
+              <span id="days">00</span>
+              <label>Días</label>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="time-unit">
+              <span id="hours">00</span>
+              <label>Horas</label>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="time-unit">
+              <span id="minutes">00</span>
+              <label>Minutos</label>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="time-unit">
+              <span id="seconds">00</span>
+              <label>Segundos</label>
             </div>
           </div>
-          <div class="countdown-container">
-            <h3>La Magia Comienza En:</h3>
-            <div id="countdown" class="countdown">
-              <div class="time-unit">
-                <span id="days">00</span>
-                <label>Días</label>
-              </div>
-              <div class="countdown-separator">:</div>
-              <div class="time-unit">
-                <span id="hours">00</span>
-                <label>Horas</label>
-              </div>
-              <div class="countdown-separator">:</div>
-              <div class="time-unit">
-                <span id="minutes">00</span>
-                <label>Minutos</label>
-              </div>
-              <div class="countdown-separator">:</div>
-              <div class="time-unit">
-                <span id="seconds">00</span>
-                <label>Segundos</label>
-              </div>
-            </div>
-          </div>
+        </div>
 
     </section>
 
@@ -93,19 +99,19 @@
         <h2 class="section-title">Detalles de la Celebración Real</h2>
         <div class="info-cards">
           <div class="mirror-card">
-            <div class="card-icon"><img src="img/calendar.png" alt="" width="150"></div>
+            <div class="card-icon"><img src="img/calendar.webp" alt="" width="150" loading="lazy"></div>
             <h3>Fecha Mágica</h3>
             <p>Sábado 15 de Junio</p>
             <p>2025</p>
           </div>
           <div class="mirror-card">
-            <div class="card-icon"><img src="img/reloj.png" alt="" width="150"></div>
+            <div class="card-icon"><img src="img/reloj.webp" alt="" width="150" loading="lazy"></div>
             <h3>Hora Real</h3>
             <p>4:00 PM</p>
             <p>¡Puntualidad real!</p>
           </div>
           <div class="mirror-card castle">
-            <div class="card-icon"><img src="img/castle.png" alt="" width="150"></div>
+            <div class="card-icon"><img src="img/castle.webp" alt="" width="150" loading="lazy"></div>
             <h3>Castillo Real</h3>
             <p>Casa de Esmeralda</p>
             <p>Dirección Mágica 123</p>
@@ -114,22 +120,22 @@
       </div>
     </section>
 
- <!-- Sección mágica -->
-  <section class="magic-quote scroll-fade-up" id="magicSection">
-    <!-- <div class="container"> -->
+    <!-- Sección mágica -->
+    <section class="magic-quote scroll-fade-up" id="magicSection">
+      <!-- <div class="container"> -->
       <canvas class="particles-canvas" id="particlesCanvas"></canvas>
       <div class="parchment-content">
         <h2>"En este reino mágico, cada sueño se hace realidad y cada momento brilla como una estrella"</h2>
       </div>
-    <!-- </div> -->
-  </section>
+      <!-- </div> -->
+    </section>
 
 
 
 
 
     <!-- RSVP Section -->
-    <section class="rsvp-section scroll-fade-up" >
+    <section class="rsvp-section scroll-fade-up">
       <div class="container">
         <h2 class="section-title">Confirma tu Asistencia Real</h2>
         <p class="rsvp-text">¡No te pierdas esta celebración mágica!</p>
@@ -159,7 +165,7 @@
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="dress-icon">
-              <img src="img/vestido.png" alt="Princesas" width="120">
+              <img src="img/vestido.webp" alt="Princesas" width="120" loading="lazy">
             </div>
             <p>Princesas</p>
           </div>
@@ -170,7 +176,7 @@
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="dress-icon">
-              <img src="img/caballero.png" alt="Príncipes" width="120">
+              <img src="img/caballero.webp" alt="Príncipes" width="120" loading="lazy">
             </div>
             <p>Príncipes</p>
           </div>
@@ -181,7 +187,7 @@
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="dress-icon">
-              <img src="img/hadita.png" alt="Hadas" width="120">
+              <img src="img/hadita.webp" alt="Hadas" width="120" loading="lazy">
             </div>
             <p>Hadas</p>
           </div>
@@ -192,7 +198,7 @@
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="dress-icon">
-              <img src="img/mago.png" alt="Magos" width="120">
+              <img src="img/mago.webp" alt="Magos" width="120" loading="lazy">
             </div>
             <p>Magos</p>
           </div>
@@ -206,10 +212,10 @@
       <div class="container">
         <h2 class="section-title">Música Mágica</h2>
         <div class="music-notes">
-          <div class="note"><img src="img/notas-musicales.png" alt="" width="150"></div>
-          <div class="note"><img src="img/notas-musicales.png" alt="" width="150"></div>
-          <div class="note"><img src="img/notas-musicales.png" alt="" width="150"></div>
-          <div class="note"><img src="img/notas-musicales.png" alt="" width="150"></div>
+          <div class="note"><img src="img/notas-musicales.webp" alt="" width="150" loading="lazy"></div>
+          <div class="note"><img src="img/notas-musicales.webp" alt="" width="150" loading="lazy"></div>
+          <div class="note"><img src="img/notas-musicales.webp" alt="" width="150" loading="lazy"></div>
+          <div class="note"><img src="img/notas-musicales.webp" alt="" width="150" loading="lazy"></div>
         </div>
         <p class="playlist-text">Playlist: Elegí qué canción no puede faltar</p>
         <button class="request-song-btn" onclick="window.open('https://tally.so/dashboard')">
@@ -223,7 +229,7 @@
       <div class="container">
         <h2 class="section-title">Regalos Mágicos</h2>
         <div class="magic-wand-container" id="magic-wand">
-          <img src="img/varita.png" alt="Varita Mágica" class="magic-wand-img">
+          <img src="img/varita.webp" alt="Varita Mágica" class="magic-wand-img" loading="lazy">
           <div class="wand-sparkles">
             <div class="wand-sparkle"></div>
             <div class="wand-sparkle"></div>
@@ -278,9 +284,9 @@
           <p>Tu presencia hará que esta celebración sea verdaderamente mágica</p>
           <div class="final-sparkles">
 
-            <img src="img/corona.png" alt="Corona" class="final-crown" >
-            <img src="img/butterfly.png" alt="Mariposa" class="final-butterfly" >
-            <img src="img/varita.png" alt="Varita" class="final-wand" >
+            <img src="img/corona.webp" alt="Corona" class="final-crown" loading="lazy">
+            <img src="img/butterfly (1).webp" alt="Mariposa" class="final-butterfly" loading="lazy">
+            <img src="img/varita.webp" alt="Varita" class="final-wand" loading="lazy">
           </div>
         </div>
       </div>

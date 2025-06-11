@@ -116,7 +116,7 @@ function toggleMusic() {
 function playMusic() {
   backgroundMusic.play().then(() => {
     isPlaying = true;
-    musicIcon.src = "img/music_off.png";
+    musicIcon.src = "img/music_off.webp";
     musicIcon.alt = "Stop Music";
   }).catch(err => console.error("🎵 Error al reproducir:", err));
 }
@@ -124,7 +124,7 @@ function playMusic() {
 function pauseMusic() {
   backgroundMusic.pause();
   isPlaying = false;
-  musicIcon.src = "img/music_on.png";
+  musicIcon.src = "img/music_on.webp";
   musicIcon.alt = "Play Music";
 }
 
@@ -681,3 +681,16 @@ function setupModal() {
     }
   });
 });
+
+gsap.from('.mirror-card', {
+  scrollTrigger: {
+    trigger: '.mirror-card',
+    start: 'top 80%',
+    toggleActions: 'play none none reverse'
+  },
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2
+});
+
