@@ -571,11 +571,12 @@ function setupModal() {
   closeBtn.addEventListener('click', closeModal);
 
   // Cerrar modal al hacer clic fuera
-  window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
+  modal.addEventListener('click', function(event) {
+  // Solo cerrar si el clic fue fuera del contenido (no adentro del modal-content)
+  if (event.target === modal) {
+    closeModal();
+  }
+});
 
   function openModal() {
     modal.style.display = 'block';

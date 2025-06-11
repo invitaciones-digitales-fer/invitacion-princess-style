@@ -317,6 +317,9 @@ html {
     height: 40px;
     animation: butterflyFly 8s linear infinite;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    animation: butterflyFly 8s linear infinite;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
 .butterfly-1 {
@@ -407,8 +410,8 @@ html {
 .countdown-container {
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);  
-    
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+
     max-width: 90%;
     width: 100%;
     padding: 1.5rem;
@@ -432,7 +435,8 @@ html {
     gap: 1rem;
 
     display: flex;
-    flex-wrap: wrap; /* 🔥 Permite que los elementos bajen en móvil */
+    flex-wrap: wrap;
+    /* 🔥 Permite que los elementos bajen en móvil */
     gap: 0.5rem;
 }
 
@@ -445,7 +449,8 @@ html {
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 
-    min-width: 60px; /* 📏 Más compacto por defecto */
+    min-width: 60px;
+    /* 📏 Más compacto por defecto */
     padding: 0.8rem;
     border-radius: 10px;
 }
@@ -611,25 +616,26 @@ html {
 .magic-quote::after {
     content: '';
     position: absolute;
-    
+
     width: 80%;
     height: 80%;
     pointer-events: none;
     z-index: 1;
     opacity: 0.6;
-    filter: blur(3px); /* 🌟 Sutil desenfoque para realismo */
+    filter: blur(3px);
+    /* 🌟 Sutil desenfoque para realismo */
 }
 
 /* ✨ Ajuste de fondo */
 .magic-quote::before {
     background-image: radial-gradient(3px 3px at 20px 30px, #fff, transparent),
-                      radial-gradient(4px 4px at 40px 70px, rgba(255, 255, 255, 0.9), transparent);
+        radial-gradient(4px 4px at 40px 70px, rgba(255, 255, 255, 0.9), transparent);
     animation: sparkleBackground 15s linear infinite;
 }
 
 .magic-quote::after {
     background-image: radial-gradient(2px 2px at 50px 50px, gold, transparent),
-                      radial-gradient(3px 3px at 100px 20px, rgba(255, 215, 0, 0.9), transparent);
+        radial-gradient(3px 3px at 100px 20px, rgba(255, 215, 0, 0.9), transparent);
     animation: sparkleBackground 18s linear infinite reverse;
 }
 
@@ -638,10 +644,13 @@ html {
         transform: translateX(0) translateY(0) scale(1);
         opacity: 0.8;
     }
+
     50% {
-        transform: translateX(-50px) translateY(-25px) scale(1.05); /* ✨ Movimiento intermedio más natural */
+        transform: translateX(-50px) translateY(-25px) scale(1.05);
+        /* ✨ Movimiento intermedio más natural */
         opacity: 1;
     }
+
     100% {
         transform: translateX(-100px) translateY(-50px) scale(1.1);
         opacity: 0.8;
@@ -1421,6 +1430,7 @@ html {
         top: 12px;
         right: 12px;
     }
+
     .countdown-container {
         max-width: 800px;
         padding: 2rem;
@@ -1440,23 +1450,38 @@ html {
     }
 
     .info-cards {
-        grid-template-columns: repeat(2, 1fr); /* 🔹 Dos columnas */
-        grid-template-areas: 
+        grid-template-columns: repeat(2, 1fr);
+        /* 🔹 Dos columnas */
+        grid-template-areas:
             "fecha hora"
-            "castillo castillo"; /* 🏰 Castillo centrado */
+            "castillo castillo";
+        /* 🏰 Castillo centrado */
     }
 
-    .mirror-card:nth-child(1) { grid-area: fecha; }
-    .mirror-card:nth-child(2) { grid-area: hora; }
-    .mirror-card.castle { grid-area: castillo; }
+    .mirror-card:nth-child(1) {
+        grid-area: fecha;
+    }
+
+    .mirror-card:nth-child(2) {
+        grid-area: hora;
+    }
 
     .mirror-card.castle {
-        justify-self: center; /* 📍 Asegura que el castillo quede bien alineado */
+        grid-area: castillo;
+    }
+
+    .mirror-card.castle {
+        justify-self: center;
+        /* 📍 Asegura que el castillo quede bien alineado */
         align-self: start;
-        max-width: 80%; /* ✨ Ajuste opcional para centrar más */
-        grid-column: span 2; /* 📏 Hace que ocupe toda la fila */
-        max-width: 100%; /* 🔹 Ajuste para que sea más ancho */
-        width: 60%; /* ✨ Ensanchar sin que toque los bordes */
+        max-width: 80%;
+        /* ✨ Ajuste opcional para centrar más */
+        grid-column: span 2;
+        /* 📏 Hace que ocupe toda la fila */
+        max-width: 100%;
+        /* 🔹 Ajuste para que sea más ancho */
+        width: 60%;
+        /* ✨ Ensanchar sin que toque los bordes */
     }
 }
 
@@ -1495,22 +1520,27 @@ html {
         height: 40px;
     }
 
-     .info-cards {
-        grid-template-columns: repeat(3, 1fr); /* 🔹 Tres columnas iguales */
+    .info-cards {
+        grid-template-columns: repeat(3, 1fr);
+        /* 🔹 Tres columnas iguales */
         grid-template-areas: "fecha hora castillo";
     }
 
     .mirror-card {
         grid-area: auto;
-        width: 100%; /* 📏 Ocupan el mismo ancho */
-        max-width: 320px; /* 🔥 Ajuste para equilibrio visual */
-        justify-self: center; /* 🏰 Centra los elementos */
+        width: 100%;
+        /* 📏 Ocupan el mismo ancho */
+        max-width: 320px;
+        /* 🔥 Ajuste para equilibrio visual */
+        justify-self: center;
+        /* 🏰 Centra los elementos */
     }
 
     .mirror-card.castle {
-         grid-area: castillo;
+        grid-area: castillo;
         justify-self: center;
-        width: 100%; /* 🔹 Evita que se haga más chico */
+        width: 100%;
+        /* 🔹 Evita que se haga más chico */
         max-width: 320px;
     }
 }

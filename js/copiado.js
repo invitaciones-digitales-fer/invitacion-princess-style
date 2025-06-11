@@ -381,3 +381,303 @@ window.addEventListener("resize", debounce(() => {
 window.addEventListener("error", (e) => {
   console.error("Error capturado:", e.message, "en", e.filename, "línea", e.lineno);
 });
+
+
+
+// === MODAL DE REGALOS ===
+function setupModal() {
+  const modal = document.getElementById('gifts-modal');
+  const magicWand = document.getElementById('magic-wand');
+  const closeBtn = document.querySelector('.close');
+
+  if (!modal || !magicWand || !closeBtn) {
+    console.warn("Alguno de los elementos del modal no existe");
+    return;
+  }
+
+  // Abrir modal al hacer clic en la varita
+  magicWand.addEventListener('click', function () {
+    openModal();
+  });
+
+  // Cerrar modal
+  closeBtn.addEventListener('click', closeModal);
+
+  // Cerrar modal al hacer clic fuera
+  modal.addEventListener('click', function(event) {
+  // Solo cerrar si el clic fue fuera del contenido (no adentro del modal-content)
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+  function openModal() {
+    modal.style.display = 'block';
+
+    // Animación de apertura
+    gsap.fromTo('.modal-content',
+      {
+        scale: 0,
+        rotation: -10,
+        opacity: 0
+      },
+      {
+        scale: 1,
+        rotation: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "back.out(1.7)"
+      }
+    );
+
+    // Animar items de regalo
+    gsap.fromTo('.gift-item',
+      {
+        x: -50,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.3,
+        stagger: 0.1,
+        delay: 0.3,
+        ease: "power2.out"
+      }
+    );
+
+    // Animar información bancaria
+    gsap.fromTo('.gift-banking',
+      {
+        y: 50,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.5,
+        ease: "power2.out"
+      }
+    );
+    gsap.fromTo(musicToggleBtn, {
+      scale: 0,
+      opacity: 0
+    }, {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+      ease: "back.out(1.7)"
+    });
+
+    musicToggleBtn.classList.remove('hidden');
+
+
+    // Efecto de sparkles en la varita
+    createSparkleEffect();
+  }
+
+  function closeModal() {
+    gsap.to('.modal-content', {
+      scale: 0,
+      rotation: 10,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => {
+        modal.style.display = 'none';
+      }
+    });
+  }
+}
+
+
+
+  // Clase para el efecto de partículas
+  class MagicParticles {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+      this.particles = [];
+      this.isActive = false;
+      this.animationId = null;
+
+      this.init();
+      this.setupEventListeners();
+    }
+
+    init() {
+      this.resizeCanvas();
+      window.addEventListener('resize', () => this.resizeCanvas());
+    }
+
+    resizeCanvas() {
+      const rect = this.canvas.parentElement.getBoundingClientRect();
+      this.canvas.width = rect.width;
+      this.canvas.height = rect.height;
+    }
+
+    setupEventListeners() {
+      const section = document.getElementById('magicSection');
+
+      section.addEventListener('mouseenter', () => {
+        this.startEffect();
+      });
+
+      section.addEventListener('mouseleave', () => {
+        this.stopEffect();
+      });
+
+      // Auto-activación en móviles
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          this.startEffect();
+          setTimeout(() => this.stopEffect(), 3000);
+        }, 1000);
+      }
+    }
+
+    createParticle() {
+      return {
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 6 + 4,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: -Math.random() * 2.5 - 1.5,
+        opacity: Math.random() * 0.8 + 0.2,
+        life: 1,
+        decay: Math.random() * 0.01 + 0.002,
+        color: this.getRandomColor(),
+        twinkle: Math.random() * Math.PI * 2,
+        twinkleSpeed: Math.random() * 0.1 + 0.05
+      };
+    }
+
+    getRandomColor() {
+      const colors = [
+        '#FFD700', '#FFA500', '#FFFF00', // Dorados
+        '#DA70D6', '#DDA0DD', '#BA55D3', '#9370DB', // Lilas
+        '#FF69B4', '#FFB6C1', // Rosas
+        '#FFFFFF', '#F8F8FF', '#FFFAFA', '#F0F8FF', // Blancos
+        '#E6E6FA', '#FFF8DC', '#FFFFF0', '#F5F5F5'  // Más blancos
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    startEffect() {
+      if (this.isActive) return;
+
+      this.isActive = true;
+
+      for (let i = 0; i < 45; i++) {
+        this.particles.push(this.createParticle());
+      }
+
+      this.animate();
+    }
+
+    stopEffect() {
+      this.isActive = false;
+
+      // Desvanecer partículas gradualmente
+      setTimeout(() => {
+        this.particles = [];
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        if (this.animationId) {
+          cancelAnimationFrame(this.animationId);
+        }
+      }, 1000);
+    }
+
+    animate() {
+      
+
+      if (!this.isActive && this.particles.length === 0) return;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      if (this.isActive && Math.random() < 0.4) {
+        this.particles.push(this.createParticle());
+      }
+
+      for (let i = this.particles.length - 1; i >= 0; i--) {
+        const particle = this.particles[i];
+
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        particle.twinkle += particle.twinkleSpeed;
+        const twinkleOpacity = (Math.sin(particle.twinkle) + 1) * 0.5;
+
+        particle.life -= particle.decay;
+        particle.opacity = particle.life * twinkleOpacity;
+
+        this.ctx.save();
+        
+        this.ctx.globalAlpha = Math.max(0, particle.opacity);
+        this.ctx.globalCompositeOperation = "lighter";
+        this.ctx.fillStyle = particle.color;
+        this.ctx.shadowBlur = 60;
+        this.ctx.shadowColor = particle.color;
+
+        this.ctx.beginPath();
+        this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        this.ctx.fill();
+
+        this.drawStar(particle.x, particle.y, particle.size * 1.5, particle.color);
+
+        this.ctx.restore();
+
+        if (particle.life <= 0 || particle.y < -10 || particle.x < -10 || particle.x > this.canvas.width + 10) {
+          this.particles.splice(i, 1);
+        }
+      }
+
+      this.animationId = requestAnimationFrame(() => this.animate());
+    }
+
+    drawStar(x, y, size, color) {
+      this.ctx.save();
+      this.ctx.strokeStyle = color;
+      this.ctx.lineWidth = 1;
+      this.ctx.globalAlpha = 0.6;
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(x - size, y);
+      this.ctx.lineTo(x + size, y);
+      this.ctx.moveTo(x, y - size);
+      this.ctx.lineTo(x, y + size);
+      this.ctx.moveTo(x - size * 0.7, y - size * 0.7);
+      this.ctx.lineTo(x + size * 0.7, y + size * 0.7);
+      this.ctx.moveTo(x - size * 0.7, y + size * 0.7);
+      this.ctx.lineTo(x + size * 0.7, y - size * 0.7);
+      this.ctx.stroke();
+
+      this.ctx.restore();
+    }
+  }
+
+  // Inicializar todo cuando se carga la página
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar partículas
+    const canvas = document.getElementById('particlesCanvas');
+    if (canvas) {
+      const magicParticles = new MagicParticles(canvas);
+    }
+
+   
+  });
+
+  gsap.utils.toArray(".scroll-fade-up").forEach(el => {
+  gsap.from(el, {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
