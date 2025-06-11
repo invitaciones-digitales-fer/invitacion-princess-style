@@ -1,7 +1,8 @@
 /* ===== MOBILE FIRST CSS ===== */
 /* Base styles for mobile (smallest screens first) */
 
-*, .music-toggle {
+*,
+.music-toggle {
     box-sizing: border-box;
 }
 
@@ -15,48 +16,66 @@
 }
 
 /* ===== TYPOGRAPHY & LAYOUT ===== */
- body {
-      font-family: Cinzel, serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      overflow-y: auto;
-      min-height: 100vh;
-    }
+body {
+    font-family: Cinzel, serif;
+    background: linear-gradient(135deg, #8f6ec2 0%, #764ba2 100%);
+    overflow-y: auto;
+    min-height: 100vh;
+}
 
-    body, html {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
+body,
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 
 .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 2;
-    }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
 
 
 
-.countdown-container h3, .welcome-title {
+.countdown-container h3,
+.welcome-title {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.enter-btn, .time-unit label {
+.enter-btn,
+.time-unit label {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.parchment-content h2, .thank-you-card p, .welcome-subtitle {
+.parchment-content h2,
+.thank-you-card p,
+.welcome-subtitle {
     font-family: 'Dancing Script', cursive;
 }
 
-.demo-content, .dress-item, .final-message, .gifts-section, .hero, .hover-hint, 
-.mirror-card, .modal-content h3, .parchment-content, .playlist-section, 
-.rsvp-section, .section-title, .welcome-overlay {
+.demo-content,
+.dress-item,
+.final-message,
+.gifts-section,
+.hero,
+.hover-hint,
+.mirror-card,
+.modal-content h3,
+.parchment-content,
+.playlist-section,
+.rsvp-section,
+.section-title,
+.welcome-overlay {
     text-align: center;
 }
 
-.countdown, .dress-item, .hero, .magic-quote, .whatsapp-btn {
+.countdown,
+.dress-item,
+.hero,
+.whatsapp-btn {
     overflow: hidden;
 }
 
@@ -79,8 +98,15 @@
 }
 
 @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .floating-logo {
@@ -88,8 +114,15 @@
 }
 
 @keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 /* Mobile-first welcome title */
@@ -101,22 +134,29 @@
 }
 
 @keyframes titleGlow {
-    from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
-    to { text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.8); }
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    to {
+        text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.8);
+    }
 }
 
 .welcome-subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      letter-spacing: 3px;
-      font-weight: 200;
-      font-size: 2rem;
-      font-family: 'Rouge Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+    font-weight: 200;
+    font-size: 2rem;
+    font-family: 'Princess Sofia', cursive;
+    padding-inline: 25px;
 }
 
-.enter-btn, .request-song-btn {
+.enter-btn,
+.request-song-btn {
     font-family: Cinzel, serif;
     cursor: pointer;
 }
@@ -185,9 +225,12 @@
         transform: translateY(100vh) scale(0);
         opacity: 0;
     }
-    10%, 90% {
+
+    10%,
+    90% {
         opacity: 1;
     }
+
     100% {
         transform: translateY(-100px) scale(1);
         opacity: 0;
@@ -225,7 +268,9 @@
 }
 
 /* ===== HERO SECTION ===== */
-.hero-background, .hero-background::before, .magic-butterflies {
+.hero-background,
+.hero-background::before,
+.magic-butterflies {
     width: 100%;
     height: 100%;
     top: 0;
@@ -238,11 +283,15 @@
     align-items: center;
     justify-content: center;
     color: #fff;
+    padding: 3rem 0;
+    overflow: hidden;
 }
 
 .hero-background {
     position: absolute;
     background: url('../img/hero-background.png') center/cover fixed;
+    width: 100%;
+    height: 100%;
     z-index: -2;
 }
 
@@ -250,12 +299,16 @@
     content: '';
     position: absolute;
     background: linear-gradient(45deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
+    width: 100%;
+    height: 100%;
     z-index: -1;
 }
 
 .magic-butterflies {
     position: absolute;
     pointer-events: none;
+    width: 100%;
+    height: 100%;
 }
 
 .butterfly {
@@ -263,51 +316,57 @@
     width: 40px;
     height: 40px;
     animation: butterflyFly 8s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .butterfly-1 {
-    left: 10%;
+    left: 15%;
     animation-delay: 0s;
-    animation-duration: 8s;
+
 }
 
 .butterfly-2 {
-    left: 50%;
+    left: 60%;
     animation-delay: 3s;
-    animation-duration: 10s;
+
 }
 
 .butterfly-3 {
-    left: 80%;
+    left: 85%;
     animation-delay: 6s;
-    animation-duration: 12s;
+
 }
 
 .butterfly-4 {
     left: 30%;
     animation-delay: 1.5s;
-    animation-duration: 11s;
+
 }
 
 .butterfly-5 {
     left: 70%;
     animation-delay: 4.5s;
-    animation-duration: 9s;
+
 }
 
+/* 🦋 Mejora en la animación */
 @keyframes butterflyFly {
     0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
+        transform: translateY(100vh) scale(1);
         opacity: 0;
     }
-    10%, 90% {
+
+    20%,
+    80% {
         opacity: 1;
     }
+
     50% {
-        transform: translateY(50vh) translateX(100px) rotate(180deg);
+        transform: translateY(50vh) translateX(50px) scale(1.1);
     }
+
     100% {
-        transform: translateY(-100px) translateX(-50px) rotate(360deg);
+        transform: translateY(-100px) translateX(-30px) scale(1);
         opacity: 0;
     }
 }
@@ -322,69 +381,83 @@
 }
 
 .main-logo {
-    width: 230px;
-    height: 230px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-    margin: 4rem 0 2rem;
-    animation: logoFloat 4s ease-in-out infinite;
+    animation: logoFloat 5s ease-in-out infinite;
 }
 
-.countdown-container, .mirror-card {
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-}
 
+/* 🎭 Animación flotante del logo */
 @keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
+
+    0%,
+    100% {
+        transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-15px) rotate(5deg);
+        transform: translateY(-15px);
     }
 }
 
 /* ===== COUNTDOWN (Mobile First) ===== */
 .countdown-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 205px;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);  
+    
+    max-width: 90%;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    text-align: center;
 }
 
 .countdown-container h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
     color: gold;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.6);
+    margin-bottom: 1rem;
+
+    font-size: 1.2rem;
 }
 
 .countdown {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
+
+    display: flex;
+    flex-wrap: wrap; /* 🔥 Permite que los elementos bajen en móvil */
     gap: 0.5rem;
-    flex-wrap: nowrap;
 }
 
 .time-unit {
-    flex: 1 1 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
     border-radius: 15px;
-    animation: countdownPulse 2s ease-in-out infinite;
-    min-width: 60px;
-    max-width: 100px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+
+    min-width: 60px; /* 📏 Más compacto por defecto */
+    padding: 0.8rem;
+    border-radius: 10px;
 }
 
 @keyframes countdownPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
+
     50% {
         transform: scale(1.05);
         box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
@@ -392,13 +465,15 @@
 }
 
 .time-unit span {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: gold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    font-size: 1.8rem;
 }
 
-.parchment-content h2, .section-title {
+.parchment-content h2,
+.section-title {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -412,16 +487,21 @@
     font-size: 2rem;
     color: gold;
     font-weight: 700;
-    animation: separatorBlink 1s ease-in-out infinite;
-    line-height: 1;
-    display: none; /* Hidden on mobile */
+
+    font-size: 1.5rem;
+    color: gold;
+    font-weight: 700;
 }
 
 @keyframes separatorBlink {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+
+    51%,
+    100% {
         opacity: 0.3;
     }
 }
@@ -446,16 +526,7 @@
     border-radius: 2px;
 }
 
-.magic-quote::after, .magic-quote::before {
-    position: absolute;
-    background-repeat: repeat;
-    content: '';
-    z-index: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-}
+
 
 /* ===== PARTY INFO ===== */
 .party-info {
@@ -468,6 +539,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+
+    text-align: center;
 }
 
 .mirror-card {
@@ -476,9 +549,13 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: 0.3s;
     animation: cardFloat 6s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
 }
 
-.dress-item:nth-child(3), .final-wand, .mirror-card:nth-child(2) {
+.dress-item:nth-child(3),
+.final-wand,
+.mirror-card:nth-child(2) {
     animation-delay: 2s;
 }
 
@@ -487,9 +564,12 @@
 }
 
 @keyframes cardFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -516,88 +596,98 @@
     margin: 0.5rem 0;
 }
 
- /* 🎇 Sección mágica */
-    .magic-quote {
-      
-     
-      position: relative;
-      min-height: 200px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    }
+/* ----------------------------------------LO NUEVO--------------------- */
+/* 🎇 Sección mágica más intensa */
+.magic-quote {
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 30px 70px rgba(0, 185, 246, 0.742);
+}
 
-    /* ✨ Efectos mágicos */
-    .magic-quote::before, .magic-quote::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
+/* ✨ Efectos mágicos aún más intensos */
+.magic-quote::before,
+.magic-quote::after {
+    content: '';
+    position: absolute;
+    
+    width: 80%;
+    height: 80%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+    filter: blur(3px); /* 🌟 Sutil desenfoque para realismo */
+}
 
-    .magic-quote::before {
-      background-image: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-                        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent);
-      background-size: 200px 100px;
-      animation: sparkleBackground 20s linear infinite;
-      opacity: 0.4;
-    }
+/* ✨ Ajuste de fondo */
+.magic-quote::before {
+    background-image: radial-gradient(3px 3px at 20px 30px, #fff, transparent),
+                      radial-gradient(4px 4px at 40px 70px, rgba(255, 255, 255, 0.9), transparent);
+    animation: sparkleBackground 15s linear infinite;
+}
 
-    .magic-quote::after {
-      background-image: radial-gradient(1px 1px at 50px 50px, gold, transparent),
-                        radial-gradient(2px 2px at 80px 20px, rgba(255, 215, 0, 0.8), transparent);
-      background-size: 250px 120px;
-      animation: sparkleBackground 25s linear infinite reverse;
-      opacity: 0.3;
-    }
+.magic-quote::after {
+    background-image: radial-gradient(2px 2px at 50px 50px, gold, transparent),
+                      radial-gradient(3px 3px at 100px 20px, rgba(255, 215, 0, 0.9), transparent);
+    animation: sparkleBackground 18s linear infinite reverse;
+}
 
-    @keyframes sparkleBackground {
-      0% { transform: translateX(0) translateY(0); }
-      100% { transform: translateX(-200px) translateY(-100px); }
+@keyframes sparkleBackground {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0.8;
     }
-
-    /* 💫 Contenedor con partículas */
-    .particles-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
+    50% {
+        transform: translateX(-50px) translateY(-25px) scale(1.05); /* ✨ Movimiento intermedio más natural */
+        opacity: 1;
     }
-
-    /* ✍️ Frase mágica */
-    .parchment-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      padding: 2rem;
+    100% {
+        transform: translateX(-100px) translateY(-50px) scale(1.1);
+        opacity: 0.8;
     }
+}
 
-    .parchment-content h2 {
-      font-size: 2rem;
-      font-family: 'Rouge Script', cursive;
-      color: #ffffff;
-      font-style: italic;
-      max-width: 90%;
-      margin: 0 auto;
-      line-height: 1.4;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      letter-spacing: 3px;
-      font-weight: 200;
-    }
 
-   
+
+/* 💫 Contenedor con partículas */
+.particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ✍️ Frase mágica */
+.parchment-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 2rem;
+}
+
+.parchment-content h2 {
+    font-size: 2rem;
+    font-family: 'Princess Sofia', cursive;
+    color: #ffffff;
+    font-style: italic;
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+    font-weight: 200;
+}
+
+
 /* ===== RSVP SECTION ===== */
 .rsvp-section {
     padding: 5rem 0;
@@ -681,7 +771,9 @@
     animation: dressItemFloat 4s ease-in-out infinite;
 }
 
-.dress-item:nth-child(2), .final-butterfly, .note:nth-child(3) {
+.dress-item:nth-child(2),
+.final-butterfly,
+.note:nth-child(3) {
     animation-delay: 1s;
 }
 
@@ -689,7 +781,8 @@
     animation-delay: 3s;
 }
 
-.dress-item::after, .dress-item::before {
+.dress-item::after,
+.dress-item::before {
     content: "";
     z-index: -1;
     background-image: linear-gradient(var(--rotate), #ff6b6b, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #feca57);
@@ -719,7 +812,8 @@
     border-radius: 20px;
 }
 
-.dress-item:hover::after, .dress-item:hover::before {
+.dress-item:hover::after,
+.dress-item:hover::before {
     opacity: 1;
 }
 
@@ -728,19 +822,23 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.dress-item:first-child::after, .dress-item:first-child::before {
+.dress-item:first-child::after,
+.dress-item:first-child::before {
     background-image: linear-gradient(var(--rotate), #ff9a9e, #fecfef 50%, #fecfef);
 }
 
-.dress-item:nth-child(2)::after, .dress-item:nth-child(2)::before {
+.dress-item:nth-child(2)::after,
+.dress-item:nth-child(2)::before {
     background-image: linear-gradient(var(--rotate), #a8edea, #fed6e3 50%, #a8edea);
 }
 
-.dress-item:nth-child(3)::after, .dress-item:nth-child(3)::before {
+.dress-item:nth-child(3)::after,
+.dress-item:nth-child(3)::before {
     background-image: linear-gradient(var(--rotate), #d299c2, #fef9d7 50%, #d299c2);
 }
 
-.dress-item:nth-child(4)::after, .dress-item:nth-child(4)::before {
+.dress-item:nth-child(4)::after,
+.dress-item:nth-child(4)::before {
     background-image: linear-gradient(var(--rotate), #89f7fe, #66a6ff 50%, #89f7fe);
 }
 
@@ -748,15 +846,19 @@
     0% {
         --rotate: 0deg;
     }
+
     100% {
         --rotate: 360deg;
     }
 }
 
 @keyframes dressItemFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-8px);
     }
@@ -832,10 +934,13 @@
 }
 
 @keyframes sparkleFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0;
         transform: translateY(0) scale(0.5);
     }
+
     50% {
         opacity: 1;
         transform: translateY(-10px) scale(1);
@@ -850,9 +955,12 @@
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.6;
     }
+
     50% {
         opacity: 1;
     }
@@ -888,12 +996,16 @@
 }
 
 @keyframes noteFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) scale(1);
     }
+
     25% {
         transform: translateY(-10px) scale(1.1);
     }
+
     75% {
         transform: translateY(-5px) scale(1.05);
     }
@@ -920,9 +1032,12 @@
 }
 
 @keyframes buttonPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
@@ -955,12 +1070,16 @@
 }
 
 @keyframes wandFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     25% {
         transform: translateY(-10px) rotate(5deg);
     }
+
     75% {
         transform: translateY(-5px) rotate(-3deg);
     }
@@ -1023,10 +1142,12 @@
         transform: scale(0) translateY(0);
         opacity: 1;
     }
+
     50% {
         transform: scale(1) translateY(-20px);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(0) translateY(-40px);
         opacity: 0;
@@ -1070,6 +1191,7 @@
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -1162,7 +1284,7 @@
     font-size: 2.2rem;
     color: #333;
     margin-bottom: 1rem;
-    
+
 }
 
 .thank-you-card p {
@@ -1170,11 +1292,11 @@
     color: #ffffff;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      letter-spacing: 3px;
-      font-weight: 200;
-      font-size: 2rem;
-      font-family: 'Rouge Script', cursive;
-      color: #ffffff;
+    letter-spacing: 3px;
+    font-weight: 200;
+    font-size: 2rem;
+    font-family: 'Princess Sofia', cursive;
+    color: #ffffff;
 }
 
 .final-sparkles {
@@ -1184,16 +1306,21 @@
     gap: 1rem;
 }
 
-.final-butterfly, .final-crown, .final-wand {
+.final-butterfly,
+.final-crown,
+.final-wand {
     width: 80px;
     height: 80px;
     animation: finalFloat 3s ease-in-out infinite;
 }
 
 @keyframes finalFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     50% {
         transform: translateY(-10px) rotate(10deg);
     }
@@ -1223,107 +1350,167 @@
     .welcome-title {
         font-size: 2rem;
     }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .countdown-separator {
         display: block;
     }
-    
+
     .countdown {
         gap: 0.5rem;
+        flex-direction: row;
     }
-    
+
     .time-unit span {
         font-size: 2.5rem;
     }
-    
+
     .dress-items {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    
+
     .dress-item {
         padding: 2rem;
     }
-    
+
     .dress-icon img {
         width: 120px;
     }
-    
+
     .sparkles img {
         width: 120px;
     }
-    
+
     .info-cards {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-    
+
     .music-notes {
         gap: 2rem;
     }
-    
+
     .modal-content {
         margin: 5% auto;
         padding: 2rem;
     }
-    
-    
+
+
     .scroll-parchment {
         padding: 3rem;
     }
-    
-    
+
+
     .final-sparkles {
         gap: 2rem;
     }
-    
-    .final-butterfly, .final-crown, .final-wand {
+
+    .final-butterfly,
+    .final-crown,
+    .final-wand {
         width: 50px;
         height: 50px;
     }
-    
+
     .music-toggle {
         width: 50px;
         height: 50px;
         top: 12px;
         right: 12px;
     }
+    .countdown-container {
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    .time-unit {
+        min-width: 80px;
+        padding: 1rem;
+    }
+
+    .countdown-container h3 {
+        font-size: 1.5rem;
+    }
+
+    .time-unit span {
+        font-size: 2.5rem;
+    }
+
+    .info-cards {
+        grid-template-columns: repeat(2, 1fr); /* 🔹 Dos columnas */
+        grid-template-areas: 
+            "fecha hora"
+            "castillo castillo"; /* 🏰 Castillo centrado */
+    }
+
+    .mirror-card:nth-child(1) { grid-area: fecha; }
+    .mirror-card:nth-child(2) { grid-area: hora; }
+    .mirror-card.castle { grid-area: castillo; }
+
+    .mirror-card.castle {
+        justify-self: center; /* 📍 Asegura que el castillo quede bien alineado */
+        align-self: start;
+        max-width: 80%; /* ✨ Ajuste opcional para centrar más */
+        grid-column: span 2; /* 📏 Hace que ocupe toda la fila */
+        max-width: 100%; /* 🔹 Ajuste para que sea más ancho */
+        width: 60%; /* ✨ Ensanchar sin que toque los bordes */
+    }
 }
+
 /* 📱 Responsive */
-    @media (max-width: 768px) {
-      
-      
-      .scroll-parchment {
+@media (max-width: 768px) {
+
+
+    .scroll-parchment {
         padding: 2rem 1.5rem;
         min-height: 250px;
         margin: 0 0.5rem;
-      }
-      
-     
     }
+
+
+}
 
 /* ===== DESKTOP STYLES (1024px and up) ===== */
 @media (min-width: 1024px) {
     .welcome-title {
         font-size: 3rem;
     }
-    
+
     .dress-items {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
-    
+
     .music-toggle {
         width: 100px;
         height: 100px;
         top: 1rem;
         right: 1rem;
     }
-    
+
     .music-icon-img {
         width: 40px;
         height: 40px;
+    }
+
+     .info-cards {
+        grid-template-columns: repeat(3, 1fr); /* 🔹 Tres columnas iguales */
+        grid-template-areas: "fecha hora castillo";
+    }
+
+    .mirror-card {
+        grid-area: auto;
+        width: 100%; /* 📏 Ocupan el mismo ancho */
+        max-width: 320px; /* 🔥 Ajuste para equilibrio visual */
+        justify-self: center; /* 🏰 Centra los elementos */
+    }
+
+    .mirror-card.castle {
+         grid-area: castillo;
+        justify-self: center;
+        width: 100%; /* 🔹 Evita que se haga más chico */
+        max-width: 320px;
     }
 }
