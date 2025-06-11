@@ -15,6 +15,21 @@
     display: none !important;
 }
 
+@font-face {
+  font-family: 'Cinzel';
+  src: url('../fonts/Cinzel-Regular.woff2') format('woff2'),
+       url('../fonts/Cinzel-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Princess Sofia';
+  src: url('../fonts/PrincessSofia-Regular.woff2') format('woff2'),
+       url('../fonts/PrincessSofia-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+
 /* ===== TYPOGRAPHY & LAYOUT ===== */
 body {
     font-family: Cinzel, serif;
