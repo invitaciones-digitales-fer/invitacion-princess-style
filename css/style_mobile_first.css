@@ -22,12 +22,7 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Princess Sofia';
-  src: url('../fonts/PrincessSofia-Regular.woff2') format('woff2'),
-       url('../fonts/PrincessSofia-Regular.woff') format('woff');
-  font-display: swap;
-}
+
 
 
 /* ===== TYPOGRAPHY & LAYOUT ===== */
@@ -166,7 +161,7 @@ html {
     letter-spacing: 3px;
     font-weight: 200;
     font-size: 2rem;
-    font-family: 'Princess Sofia', cursive;
+    font-family: 'Dancing Script', cursive;
     padding-inline: 25px;
 }
 
